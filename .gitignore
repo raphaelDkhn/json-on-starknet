@@ -1,0 +1,20 @@
+node_modules
+env
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+shell.nix
+requirements.txt
+.DS_Store
+
+#Hardhat files
+cache
+artifacts
+
+draft
+solidity
+starknet-artifacts
+midi
+
