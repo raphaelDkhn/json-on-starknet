@@ -2,7 +2,7 @@ import { Midi } from "@tonejs/midi";
 import * as fs from "fs";
 
 async function midi2json() {
-  const file = fs.readFileSync("midi/test.mid");
+  const file = fs.readFileSync("midi/test5.mid");
   const midi = new Midi(file);
   const json = JSON.stringify(midi);
 
