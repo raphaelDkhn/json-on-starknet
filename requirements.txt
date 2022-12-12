@@ -1,5 +1,5 @@
 ecdsa
 fastecdsa
 sympy
-cairo-lang==0.10.2
+cairo-lang==0.10.0
 openzeppelin-cairo-contracts
