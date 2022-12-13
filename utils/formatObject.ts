@@ -1,8 +1,8 @@
 import { randomBytes } from "crypto";
-import { decimals } from "../../utils/constants";
+import { decimals } from "./constants";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
-function splitLongString(
+export function splitLongString(
   longString: string,
   hre: HardhatRuntimeEnvironment
 ): { [key: string]: BigInt } {
@@ -30,14 +30,35 @@ export function formatObject(obj: any, hre: HardhatRuntimeEnvironment): any {
           // If the element is itself an object, recursively convert its arrays to objects
           if (typeof value[i] === "object") {
             convertedObj[`Arr_${randomValue}_${key}`][
-              `Ele${i}_${randomValue}`
+              `Ele${i}_obj_${randomValue}`
             ] = formatObject(value[i], hre);
-          } else {
+          } else if (typeof value[i] === "string") {
+            if (value[i].length < 32 && value[i].length > 0) {
+              convertedObj[`Arr_${randomValue}_${key}`][
+                `Ele${i}_shortStr_${randomValue}`
+              ] = hre.starknet.shortStringToBigInt(value[i]);
+            } else if (value[i].length > 31) {
+              convertedObj[`Arr_${randomValue}_${key}`][
+                `Ele${i}_longStr_${randomValue}`
+              ] = splitLongString(value[i], hre);
+            }
+          } else if (typeof value[i] === "boolean") {
             convertedObj[`Arr_${randomValue}_${key}`][
-              `Ele${i}_${randomValue}`
-            ] = value[i];
+              `Ele${i}_bool_${randomValue}`
+            ] = value[i] == true ? 1n : 0n;
+          } else if (typeof value[i] === "number") {
+            convertedObj[`Arr_${randomValue}_${key}`][
+              `Ele${i}_num_${randomValue}`
+            ] = BigInt(value[i] * decimals);
+          } else if (typeof value[i] === "undefined") {
+            convertedObj[`Arr_${randomValue}_${key}`][
+              `Ele${i}_undefined_${randomValue}`
+            ] = hre.starknet.shortStringToBigInt("_undefined");
           }
         }
+      } else if (value.length == 0) {
+        convertedObj[`EmptyArr_${key}`] =
+          hre.starknet.shortStringToBigInt("_empty");
       }
     } else if (typeof value === "object") {
       if (Object.keys(value).length != 0) {
@@ -59,9 +80,7 @@ export function formatObject(obj: any, hre: HardhatRuntimeEnvironment): any {
       convertedObj[`Num_${key}`] = BigInt(value * decimals);
     } else if (typeof value === "undefined") {
       convertedObj[`Undefined_${key}`] =
-        hre.starknet.shortStringToBigInt("undefined");
-    } else {
-      convertedObj[key] = value;
+        hre.starknet.shortStringToBigInt("_undefined");
     }
   }
 

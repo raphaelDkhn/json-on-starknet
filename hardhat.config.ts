@@ -3,14 +3,11 @@ import "@typechain/hardhat";
 import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-waffle";
 import "@shardlabs/starknet-hardhat-plugin";
-import { generateContract } from "./src/contractGenerator/generateContract";
+import { generateContract } from "./scripts/generateContract";
 
 task("generateContract", "represent a JSON as a Starknet smart contract")
   .addPositionalParam("json", "path to the JSON file")
-  .addPositionalParam(
-    "folder",
-    "folder where the contract should be generated"
-  )
+  .addPositionalParam("folder", "folder where the contract should be generated")
   .setAction(async ({ json, folder }, hre) => {
     return await generateContract(json, folder, hre);
   });

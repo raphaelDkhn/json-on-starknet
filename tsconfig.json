@@ -12,7 +12,7 @@
     "./scripts",
     "./test",
     "./typechain-types",
-    "src/contractGenerator/generateContract.ts"
+    "scripts/generateContract.ts"
   ],
   "files": ["./hardhat.config.ts"]
 }

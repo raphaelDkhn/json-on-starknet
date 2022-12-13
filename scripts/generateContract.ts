@@ -1,13 +1,10 @@
 import * as fs from "fs";
-import { formatObject } from "./formatObject";
-import { addValuesToStructs } from "./addValueToStructs";
-import { Object2Structs } from "./object2structs";
+import { formatObject } from "../utils/formatObject";
+import { Object2Structs } from "../utils/object2structs";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 async function writeInFile(path: string, data: string) {
-  await fs.promises.writeFile(`${path}/generated.cairo`, `${data}\n`, {
-    flag: "w",
-  });
+  await fs.promises.writeFile(`${path}/generated.cairo`, `${data}\n`);
 }
 
 export async function generateContract(
@@ -16,6 +13,7 @@ export async function generateContract(
   hre: HardhatRuntimeEnvironment
 ) {
   const obj = JSON.parse(fs.readFileSync(json, "utf-8"));
+  const obj2structs = new Object2Structs();
 
   //format object
   const objectFormatted = formatObject(obj, hre);
@@ -42,20 +40,19 @@ export async function generateContract(
     "\n\tlet object = Root (\n",
   ];
 
-  const structValues = addValuesToStructs(objectFormatted, "\t\t");
+  const addValues = obj2structs.addValues(objectFormatted, "\t\t");
 
   let functionEnd = ["\t);\n", "\n\treturn(object,);\n", "}"];
 
   //*=========== WRITE STRUCTS ===========*//
 
-  const obj2structs = new Object2Structs();
   const structs = obj2structs.convert(objectFormatted);
 
   const array = [
     ...contractTop,
     ...structs,
     ...functionStart,
-    ...structValues,
+    ...addValues,
     ...functionEnd,
   ];
 
