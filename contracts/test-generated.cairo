@@ -1,0 +1,157 @@
+// SPDX-License-Identifier: MIT
+
+%lang starknet
+
+//===============================================
+//=========== GENERATED CAIRO PROGRAM ===========
+//===============================================
+
+from starkware.cairo.common.cairo_builtins import HashBuiltin
+
+struct Ele0_obj_601e113b38195a5ebafd {
+	shortStr_aString: felt,
+}
+
+struct Ele2_longStr_601e113b38195a5ebafd {
+	longStr_Element0: felt,
+	longStr_Element1: felt,
+	longStr_Element2: felt,
+	longStr_Element3: felt,
+	longStr_Element4: felt,
+	longStr_Element5: felt,
+	longStr_Element6: felt,
+	longStr_Element7: felt,
+	longStr_Element8: felt,
+	longStr_Element9: felt,
+	longStr_Element10: felt,
+	longStr_Element11: felt,
+	longStr_Element12: felt,
+	longStr_Element13: felt,
+	longStr_Element14: felt,
+}
+
+struct Ele7_obj_601e113b38195a5ebafd {
+	shortStr_aString: felt,
+}
+
+struct Arr_601e113b38195a5ebafd_anArray {
+	ele0_obj_601e113b38195a5ebafd: Ele0_obj_601e113b38195a5ebafd,
+	ele1_shortStr_601e113b38195a5ebafd: felt,
+	ele2_longStr_601e113b38195a5ebafd: Ele2_longStr_601e113b38195a5ebafd,
+	ele3_bool_601e113b38195a5ebafd: felt,
+	ele4_bool_601e113b38195a5ebafd: felt,
+	ele5_num_601e113b38195a5ebafd: felt,
+	ele6_num_601e113b38195a5ebafd: felt,
+	ele7_obj_601e113b38195a5ebafd: Ele7_obj_601e113b38195a5ebafd,
+}
+
+struct Obj_d28321a0b6881e8ab8ea_objectAgain {
+	shortStr_aString: felt,
+}
+
+struct Obj_77801ffb1739022729ae_anObject {
+	obj_d28321a0b6881e8ab8ea_objectAgain: Obj_d28321a0b6881e8ab8ea_objectAgain,
+	emptyArr_anEmptyArray: felt,
+}
+
+struct LongStr_aLongString {
+	longStr_Element0: felt,
+	longStr_Element1: felt,
+	longStr_Element2: felt,
+	longStr_Element3: felt,
+	longStr_Element4: felt,
+	longStr_Element5: felt,
+	longStr_Element6: felt,
+	longStr_Element7: felt,
+	longStr_Element8: felt,
+	longStr_Element9: felt,
+	longStr_Element10: felt,
+	longStr_Element11: felt,
+	longStr_Element12: felt,
+	longStr_Element13: felt,
+	longStr_Element14: felt,
+}
+
+struct Root {
+	arr_601e113b38195a5ebafd_anArray: Arr_601e113b38195a5ebafd_anArray,
+	obj_77801ffb1739022729ae_anObject: Obj_77801ffb1739022729ae_anObject,
+	shortStr_aShortString: felt,
+	longStr_aLongString: LongStr_aLongString,
+	bool_aBool: felt,
+	bool_aBool2: felt,
+	num_anInteger: felt,
+	num_aFloat: felt,
+}
+
+@view
+func retrieve_object {
+	syscall_ptr : felt*,
+	pedersen_ptr : HashBuiltin*,
+	range_check_ptr
+} () -> (object: Root) {
+
+	// build up the struct from bottom up
+
+	let object = Root (
+		arr_601e113b38195a5ebafd_anArray = Arr_601e113b38195a5ebafd_anArray(
+			ele0_obj_601e113b38195a5ebafd = Ele0_obj_601e113b38195a5ebafd(
+				shortStr_aString = 6382179,
+			),
+			ele1_shortStr_601e113b38195a5ebafd = 35717030708670842322654162535,
+			ele2_longStr_601e113b38195a5ebafd = Ele2_longStr_601e113b38195a5ebafd(
+				longStr_Element0 = 135049554883004558383340439742929429255072943744440858662311072577337126766,
+				longStr_Element1 = 203887170123222058415354283980421533276985178030994883159827760142323294308,
+				longStr_Element2 = 196343614134218459150194337625778954700414868493373034945803514629145850912,
+				longStr_Element3 = 191491606203201332235940470946533476219373216944002683254566549675726417440,
+				longStr_Element4 = 150983476482645969577707455338206408996455974968365254240526141964709732462,
+				longStr_Element5 = 196916864427988120570407658938236398782031728400132565646592333804118761826,
+				longStr_Element6 = 196909666192589839125749789377187946419246316474617716408635151520594095469,
+				longStr_Element7 = 196813194790058405304648293705918578087067829656515557846310140882367702304,
+				longStr_Element8 = 177453723733185576714733374696352728732570104963746869295217435029852157296,
+				longStr_Element9 = 205626866913640406710855947215846783868478671899714515347745341122044829797,
+				longStr_Element10 = 206944724740807521760848243968527150132378421479938076780207856570169913460,
+				longStr_Element11 = 179262134716582379664050630825161360427629933871789628570061263084916207470,
+				longStr_Element12 = 57315186830689097203344614254738819661977319799100134754662789960576298854,
+				longStr_Element13 = 180945764106274421657215904243541600101876774148932526405405632102037463141,
+				longStr_Element14 = 139574861873137052279991598,
+			),
+			ele3_bool_601e113b38195a5ebafd = 1,
+			ele4_bool_601e113b38195a5ebafd = 0,
+			ele5_num_601e113b38195a5ebafd = 42000000000000000000,
+			ele6_num_601e113b38195a5ebafd = 42424242419999997952,
+			ele7_obj_601e113b38195a5ebafd = Ele7_obj_601e113b38195a5ebafd(
+				shortStr_aString = 6382179,
+			),
+		),
+		obj_77801ffb1739022729ae_anObject = Obj_77801ffb1739022729ae_anObject(
+			obj_d28321a0b6881e8ab8ea_objectAgain = Obj_d28321a0b6881e8ab8ea_objectAgain(
+				shortStr_aString = 6382179,
+			),
+			emptyArr_anEmptyArray = 104889232422009,
+		),
+		shortStr_aShortString = 6382179,
+		longStr_aLongString = LongStr_aLongString(
+			longStr_Element0 = 135049554883004558383340439742929429255072943744440858662311072577337126766,
+			longStr_Element1 = 203887170123222058415354283980421533276985178030994883159827760142323294308,
+			longStr_Element2 = 196343614134218459150194337625778954700414868493373034945803514629145850912,
+			longStr_Element3 = 191491606203201332235940470946533476219373216944002683254566549675726417440,
+			longStr_Element4 = 150983476482645969577707455338206408996455974968365254240526141964709732462,
+			longStr_Element5 = 196916864427988120570407658938236398782031728400132565646592333804118761826,
+			longStr_Element6 = 196909666192589839125749789377187946419246316474617716408635151520594095469,
+			longStr_Element7 = 196813194790058405304648293705918578087067829656515557846310140882367702304,
+			longStr_Element8 = 177453723733185576714733374696352728732570104963746869295217435029852157296,
+			longStr_Element9 = 205626866913640406710855947215846783868478671899714515347745341122044829797,
+			longStr_Element10 = 206944724740807521760848243968527150132378421479938076780207856570169913460,
+			longStr_Element11 = 179262134716582379664050630825161360427629933871789628570061263084916207470,
+			longStr_Element12 = 57315186830689097203344614254738819661977319799100134754662789960576298854,
+			longStr_Element13 = 180945764106274421657215904243541600101876774148932526405405632102037463141,
+			longStr_Element14 = 139574861873137052279991598,
+		),
+		bool_aBool = 1,
+		bool_aBool2 = 0,
+		num_anInteger = 42000000000000000000,
+		num_aFloat = 42424242419999997952,
+	);
+
+	return(object,);
+}

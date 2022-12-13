@@ -8,8 +8,9 @@ import { generateContract } from "./scripts/generateContract";
 task("generateContract", "represent a JSON as a Starknet smart contract")
   .addPositionalParam("json", "path to the JSON file")
   .addPositionalParam("folder", "folder where the contract should be generated")
-  .setAction(async ({ json, folder }, hre) => {
-    return await generateContract(json, folder, hre);
+  .addPositionalParam("name", "name of the generated file")
+  .setAction(async ({ json, folder, name }, hre) => {
+    return await generateContract(json, folder, name, hre);
   });
 
 const config: HardhatUserConfig = {

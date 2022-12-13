@@ -12,7 +12,8 @@
     "./scripts",
     "./test",
     "./typechain-types",
-    "scripts/generateContract.ts"
+    "scripts/generateContract.ts",
+    "draft/midi2json.ts"
   ],
   "files": ["./hardhat.config.ts"]
 }

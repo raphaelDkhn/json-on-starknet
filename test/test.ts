@@ -1,8 +1,8 @@
-import { Midi } from "@tonejs/midi";
 import { expect } from "chai";
 import { starknet } from "hardhat";
 import { StarknetContract } from "hardhat/types";
 import { unformatObject } from "../utils/unformatObject";
+import originalJSON from "./input/test.json";
 import * as fs from "fs";
 
 let contract: StarknetContract;
@@ -11,28 +11,19 @@ describe("Test", function () {
   this.timeout(300_000);
 
   before(async () => {
-    const contractFactory = await starknet.getContractFactory("generated");
+    const contractFactory = await starknet.getContractFactory("test-generated");
     contract = await contractFactory.deploy();
   });
 
-  it("should test", async () => {
-    const obj = await contract.call("retrieve_object");
-    const converted = unformatObject(obj.object);
+  it("The object retrieved from the contract should be the same as the original JSON object", async () => {
+    const originalObj = JSON.parse(JSON.stringify(originalJSON));
 
-    console.log(converted)
+    const onchainObj = await contract.call("retrieve_object");
+    const object = unformatObject(onchainObj.object);
 
-    // const json = JSON.stringify(converted);
+    const json = JSON.stringify(object);
+    fs.writeFileSync(__dirname + "/result/test.json", json);
 
-    // fs.writeFileSync(__dirname + "/result/resut1.json", json);
-
-    // const midi = new Midi();
-    // midi.fromJSON(converted);
-
-    // fs.writeFileSync(
-    //   __dirname + "/result/resut2.mid",
-    //   Buffer.from(midi.toArray())
-    // );
-
-    // console.log(midi);
+    expect(object).to.deep.equal(originalObj);
   });
 });
