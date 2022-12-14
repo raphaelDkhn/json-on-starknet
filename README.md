@@ -1,5 +1,5 @@
 
-# Represent-JSON-Object-On-Starknet 💫
+# Represent JSON Object On Starknet 💫
 
 An experimental project for representing any JSON data structure as a [Starknet](https://starkware.co/starknet/) smart contract. It demonstrates the feasibility of hosting complex objects, such as MIDI compositions, in smart contracts
 
