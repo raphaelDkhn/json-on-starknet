@@ -7,7 +7,7 @@ function getLongString(longStringObject: { [key: string]: BigInt }): string {
     .join("");
 }
 
-export function unformatObject(obj: any): any {
+export function onchainObjectToJson(obj: any): any {
   const originalObj: any = {};
 
   for (const key of Object.keys(obj)) {
@@ -17,7 +17,7 @@ export function unformatObject(obj: any): any {
     const formatValue = (val: any, valType: string): any => {
       switch (valType) {
         case "obj":
-          return unformatObject(val);
+          return onchainObjectToJson(val);
         case "shortStr":
           return starknet.bigIntToShortString(val);
         case "longStr":

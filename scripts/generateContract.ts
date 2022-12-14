@@ -3,13 +3,12 @@ import { formatObject } from "../utils/formatObject";
 import { Object2Structs } from "../utils/object2structs";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 
-async function writeInFile(folder: string, fileName: string, data: string) {
-  await fs.promises.writeFile(`${folder}/${fileName}.cairo`, `${data}\n`);
+async function writeInFile(fileName: string, data: string) {
+  await fs.promises.writeFile(`contracts/${fileName}.cairo`, `${data}\n`);
 }
 
 export async function generateContract(
   json: any,
-  contractFolder: string,
   fileName: string,
   hre: HardhatRuntimeEnvironment
 ) {
@@ -57,5 +56,5 @@ export async function generateContract(
     ...functionEnd,
   ];
 
-  await writeInFile(contractFolder, fileName, array.join(""));
+  await writeInFile(fileName, array.join(""));
 }

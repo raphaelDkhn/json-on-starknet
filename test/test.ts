@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { starknet } from "hardhat";
 import { StarknetContract } from "hardhat/types";
-import { unformatObject } from "../utils/unformatObject";
+import { onchainObjectToJson } from "../utils/onchainObjectToJson";
 import originalJSON from "./input/test.json";
 import * as fs from "fs";
 
@@ -19,7 +19,7 @@ describe("Test", function () {
     const originalObj = JSON.parse(JSON.stringify(originalJSON));
 
     const onchainObj = await contract.call("retrieve_object");
-    const object = unformatObject(onchainObj.object);
+    const object = onchainObjectToJson(onchainObj.object);
 
     const json = JSON.stringify(object);
     fs.writeFileSync(__dirname + "/result/test.json", json);
