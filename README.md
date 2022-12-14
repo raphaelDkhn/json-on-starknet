@@ -3,7 +3,6 @@
 
 An experimental project for representing any JSON data structure as a [Starknet](https://starkware.co/starknet/) smart contract. It demonstrates the feasibility of hosting complex objects, such as MIDI compositions, in smart contracts
 
-
 ## How to run the project? 
 
 Install modules defined in package.json
@@ -15,9 +14,6 @@ Create a temporary environment
 ```
 nix-shell
 ```
-
-
-
 
 ## Generate a contract
 To represent a JSON object as a Starknet smart contract:
@@ -32,8 +28,7 @@ This will generate a new cairo file with the specified name in contracts folder.
 ```
 npx hardhat generateContract example/input/midi.json midi-generated
 ```
-
-
+(I used the [Tone.js](https://github.com/Tonejs/Midi) library to convert the object retrieved from the smart contract into a midi file.)
 
 ## Retrieve onchain object
 Once your contract is deployed, you can call the smart contract's `retrieve_object` function to get a representation of your original JSON object. 
@@ -45,4 +40,4 @@ If you have any comments, suggestions, or encounter any problems, please let me 
 
  - [3d-asset-on-starknet by guiltygyoza](https://github.com/guiltygyoza/3d-asset-on-starknet)
  - [json2ts](https://github.com/GregorBiswanger/json2ts)
-
+ - [Tone.js](https://github.com/Tonejs/Midi)
