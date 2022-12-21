@@ -8,7 +8,7 @@ import { generateContract } from "./scripts/generateContract";
 task("generateContract", "represent a JSON as a Starknet smart contract")
   .addPositionalParam("json", "path to the JSON file")
   .addPositionalParam("name", "name of the generated file")
-  .setAction(async ({ json, folder, name }, hre) => {
+  .setAction(async ({ json, name }, hre) => {
     return await generateContract(json, name, hre);
   });
 
